@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helping Hands - Food Donation</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <header>
+        Helping Hands - Food Donation Platform
+    </header>
+
+    <!-- Updated Navigation -->
+	<nav>
+	    <a href="index.html#home" onclick="showPage('home')">Home</a> <!-- Can remain for internal SPA behavior -->
+	    <a href="#about" onclick="showPage('about')">About Us</a> <!-- Full page link -->
+	    <a href="#donate" onclick="showPage('donate')">Donate</a> <!-- Full page link -->
+	    <a href="#contact" onclick="showPage('contact')">Contact Us</a> <!-- Full page link -->
+	</nav>
+
+    <!-- Home Section -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>Give a Helping Hand</h1>
+            <p>Join us in fighting hunger and making a difference.</p>
+        </div>
+        <div class="container">
+            <section class="section">
+                <h2>Welcome to Helping Hands</h2>
+                <p>Your contributions make a big difference in reducing hunger and food waste.</p>
+            </section>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="page">
+        <div class="container">
+            <section class="section">
+                <h2>About Us</h2>
+                <p>Helping Hands is a food donation platform dedicated to reducing hunger and food waste. We connect donors and organizations in need, ensuring food reaches those who need it the most.</p>
+            </section>
+        </div>
+    </div>
+
+    <!-- Donate Section -->
+    <div id="donate" class="page">
+        <div class="container">
+            <section class="section">
+                <h2>Donate</h2>
+                <p>Your contributions can make a big difference. Donate food or funds to help those in need.</p>
+                <button onclick="showDonateForm()">Donate Now</button>
+            </section>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="page">
+        <div class="container">
+            <section class="section">
+                <h2>Contact Us</h2>
+                <p>Email: info@helpinghands.org | Phone: +123-456-7890</p>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Helping Hands | <a href="#">Privacy Policy</a>
+    </footer>
+
+    <script>
+        // Function to show the relevant page based on the clicked navigation item
+        function showPage(pageId) {
+            // Remove 'active' class from all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            // Add 'active' class to the selected page
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Function to navigate to the donate page
+        function showDonateForm() {
+            window.location.href = "donate.html";
+        }
+    </script>
+</body>
+</html>

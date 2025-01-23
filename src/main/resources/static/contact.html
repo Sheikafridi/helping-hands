@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Helping Hands</title>
+	<link rel="stylesheet" href="/css/styles.css">
+	<script src="/js/main.js"></script></head>
+<body>
+    <header>
+        Helping Hands - Contact Us
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="donate.html">Donate</a>
+    </nav>
+
+    <div class="container">
+        <section class="section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or would like to get in touch with us, feel free to use the details below:</p>
+
+            <h3>Email</h3>
+            <p>info@helpinghands.org</p>
+
+            <h3>Phone</h3>
+            <p>+123-456-7890</p>
+
+            <h3>Address</h3>
+            <p>Helping Hands Foundation, 123 Main Street, City, Country</p>
+
+            <h3>Social Media</h3>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+
+            <h3>Contact Form</h3>
+            <form id="contactForm">
+                <label for="contact-name">Your Name:</label>
+                <input type="text" id="contact-name" name="contact-name" required>
+
+                <label for="contact-email">Your Email:</label>
+                <input type="email" id="contact-email" name="contact-email" required>
+
+                <label for="contact-message">Your Message:</label>
+                <textarea id="contact-message" name="contact-message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2024 Helping Hands | <a href="#">Privacy Policy</a>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const contactData = {
+                name: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                message: document.getElementById('contact-message').value
+            };
+
+            // Here, you can send the contact data to the server using fetch or another AJAX method.
+            fetch('http://localhost:8080/api/contact', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(contactData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Thank you for reaching out! We will get back to you soon.');
+                // Clear form after submission
+                document.getElementById('contactForm').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error sending your message. Please try again later.');
+            });
+        });
+    </script>
+</body>
+</html>
