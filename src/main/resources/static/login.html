@@ -138,27 +138,32 @@
             }
 			*/
 			async function signIn() {
-			    const formData = new FormData();
-			    formData.append("username", document.getElementById('signin-username').value);
-			    formData.append("password", document.getElementById('signin-password').value);
-				
-			    console.log(formData);
-			    
-			    const response = await fetch('http://localhost:5555/api/login', { // `/login` endpoint
+			    const username = document.getElementById('signin-username').value;
+			    const password = document.getElementById('signin-password').value;
+
+			    const requestData = {
+			        username: username,
+			        password: password
+			    };
+
+			    const response = await fetch('http://localhost:5555/api/login', { // Adjust URL if necessary
 			        method: 'POST',
-			        body: formData,
+			        headers: {
+			            'Content-Type': 'application/json' // Set JSON content type
+			        },
+			        body: JSON.stringify(requestData),
 			        credentials: 'include' // Important for session cookies
 			    });
 
 			    console.log(response);
 
 			    if (response.ok) {
-			        //window.location.href = 'http://localhost:5555/index.html#home'; // Redirect after login
+			        window.location.href = 'http://localhost:5555/index.html#home';
 			    } else {
 			        alert("Invalid username or password");
-			        
 			    }
 			}
+
 
     </script>
 </body>
